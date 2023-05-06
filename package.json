@@ -8,7 +8,7 @@
 		"@testing-library/react": "^13.4.0",
 		"@testing-library/user-event": "^13.5.0",
 		"axios": "^1.4.0",
-		"concurrently": "^8.0.1",
+		"child_process": "^1.0.2",
 		"cors": "^2.8.5",
 		"dotenv": "^16.0.3",
 		"electron": "^24.1.2",
@@ -22,7 +22,9 @@
 		"web-vitals": "^2.1.4"
 	},
 	"scripts": {
-		"start": "react-scripts start",
+		"start": "concurrently \"npm run start:api\" \"npm run start:react\"",
+		"start:api": "node ./src/server/index.js",
+		"start:react": "react-scripts start",
 		"build": "react-scripts build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject",
@@ -48,6 +50,7 @@
 	},
 	"devDependencies": {
 		"@types/node": "^20.0.0",
+		"concurrently": "^8.0.1",
 		"wait-on": "^7.0.1"
 	}
 }
